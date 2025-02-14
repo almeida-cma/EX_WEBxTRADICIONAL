@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferença entre Conteúdo WEB e Tradicional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .content h2 {
+            margin-top: 0;
+        }
+        .content p {
+            line-height: 1.6;
+        }
+        .web-content {
+            border-left: 5px solid #0073e6;
+        }
+        .traditional-content {
+            border-left: 5px solid #e60000;
+        }
+        .interactive-element {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .interactive-element:hover {
+            background-color: #005bb5;
+        }
+        .icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .icons i {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .hidden-content {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #0073e6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Estilos para o tema escuro no GRID WEB */
+        .web-content.dark-theme {
+            background-color: #444;
+            color: #f4f4f4;
+        }
+        .web-content.dark-theme .interactive-element {
+            background-color: #005bb5;
+        }
+        .web-content.dark-theme .hidden-content {
+            background-color: #555;
+            color: #f4f4f4;
+        }
+        .web-content.dark-theme .icons i {
+            color: #f4f4f4;
+        }
+        /* Estilos para o tema claro no GRID WEB */
+        .web-content.light-theme {
+            background-color: #fff;
+            color: #333;
+        }
+        .web-content.light-theme .interactive-element {
+            background-color: #0073e6;
+        }
+        .web-content.light-theme .hidden-content {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .web-content.light-theme .icons i {
+            color: #0073e6;
+        }
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Conteúdo WEB -->
+        <div class="content web-content light-theme" id="webContent">
+            <h2>Conteúdo WEB</h2>
+            <p>O conteúdo web é projetado para ser consumido online, com foco em interatividade e otimização para SEO. Ele é adaptável a diferentes dispositivos e plataformas, garantindo uma experiência de usuário consistente.</p>
+
+            <!-- Ícones -->
+            <div class="icons">
+                <i class="fas fa-volume-up" id="audioIcon" title="Ouvir conteúdo"></i>
+                <i class="fas fa-moon" id="darkThemeIcon" title="Tema Escuro"></i>
+                <i class="fas fa-sun" id="lightThemeIcon" title="Tema Claro"></i>
+            </div>
+
+            <!-- Botão Interativo -->
+            <button class="interactive-element" onclick="toggleHiddenContent()">Mostrar Mais Informações</button>
+            <div id="hiddenContent" class="hidden-content">
+                <p>Este é um conteúdo adicional que pode ser exibido ou ocultado com um clique. Isso demonstra a interatividade comum em conteúdos web.</p>
+            </div>
+        </div>
+
+        <!-- Conteúdo Tradicional -->
+        <div class="content traditional-content">
+            <h2>Conteúdo Tradicional</h2>
+            <p>O conteúdo tradicional, como artigos de revistas ou jornais, é geralmente linear e feito para mídias físicas. Ele não possui interatividade e é consumido de forma passiva pelo leitor.</p>
+        </div>
+    </div>
+
+    <script>
+        // Função para alternar a visibilidade do conteúdo oculto
+        function toggleHiddenContent() {
+            const hiddenContent = document.getElementById('hiddenContent');
+            if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
+                hiddenContent.style.display = 'block';
+            } else {
+                hiddenContent.style.display = 'none';
+            }
+        }
+
+        // Função para ler o conteúdo principal em áudio
+        function readContent() {
+            const content = document.querySelector('.web-content p').textContent;
+            const utterance = new SpeechSynthesisUtterance(content);
+            utterance.lang = 'pt-BR'; // Define o idioma para português
+            speechSynthesis.speak(utterance);
+        }
+
+        // Função para alternar para o tema escuro no GRID WEB
+        function enableDarkTheme() {
+            const webContent = document.getElementById('webContent');
+            webContent.classList.remove('light-theme');
+            webContent.classList.add('dark-theme');
+        }
+
+        // Função para alternar para o tema claro no GRID WEB
+        function enableLightTheme() {
+            const webContent = document.getElementById('webContent');
+            webContent.classList.remove('dark-theme');
+            webContent.classList.add('light-theme');
+        }
+
+        // Adiciona eventos aos ícones
+        document.getElementById('audioIcon').addEventListener('click', readContent);
+        document.getElementById('darkThemeIcon').addEventListener('click', enableDarkTheme);
+        document.getElementById('lightThemeIcon').addEventListener('click', enableLightTheme);
+    </script>
+
+</body>
+</html>
