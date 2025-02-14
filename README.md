@@ -3,9 +3,9 @@ Esta aplicação é uma página web interativa que demonstra as diferenças entr
 
 ________________________________________
 
-#Diferença Entre Conteúdo Web e Conteúdo Tradicional
+# Diferença Entre Conteúdo Web e Conteúdo Tradicional
 
-Conteúdo Web
+**Conteúdo Web**
 
 •	Definição: Conteúdo projetado para ser consumido online, com foco em interatividade e otimização para dispositivos e plataformas variadas.
 
@@ -21,7 +21,7 @@ o	Responsivo: Adapta-se a diferentes dispositivos (desktop, tablet, mobile).
 
 •	Exemplos: Sites, blogs, aplicativos web, redes sociais.
 
-Conteúdo Tradicional
+**Conteúdo Tradicional**
 
 •	Definição: Conteúdo linear, geralmente feito para mídias físicas, como revistas, jornais ou livros.
 
