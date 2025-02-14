@@ -38,3 +38,6 @@ o	Não Responsivo: Não se adapta a diferentes dispositivos ou tamanhos de tela.
 •	Exemplos: Jornais impressos, revistas, livros, panfletos.
 
 ________________________________________
+
+Verificar em: https://almeida-cma.github.io/EX_WEBxTRADICIONAL/
+
